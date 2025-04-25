@@ -1,6 +1,6 @@
 from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 from dotenv import load_dotenv
-from llama_index.llms import OpenAI
+from llama_index.llms.openai import OpenAI
 load_dotenv()
 OpenAI(model="gpt-3.5-turbo")
 documents = SimpleDirectoryReader("pdf/").load_data()
