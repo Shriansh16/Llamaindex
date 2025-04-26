@@ -101,3 +101,36 @@ This approach uses LlamaIndex's `as_chat_engine()` to enable conversational, con
 
 - Use `query_engine.query()` for simple, isolated questions.
 - Use `chat_engine.chat()` for chatbot experiences with memory and multi-turn conversation support.
+
+
+# Custom RAG using LlamaIndex
+
+Even though you’re configuring the retriever, synthesizer, and postprocessors yourself—just like traditional RAG—the difference lies in the power, flexibility, and abstraction that LlamaIndex brings behind the scenes. Here's how:
+
+## 🔍 1. Modular and Composable Architecture
+LlamaIndex breaks RAG into well-defined components:
+- **Retriever**
+- **Response Synthesizer**
+- **Postprocessors**
+- **Storage Context**
+
+This modular design means you can mix and match components easily depending on the use case (e.g., chatbot vs. summarizer vs. Q&A).
+
+## ⚙️ 2. Extensibility with Defaults
+- You can configure everything yourself (like you're doing now), but you don't have to.
+- LlamaIndex offers intelligent defaults—a simple `index.query("...")` works out-of-the-box.
+- When you need more control (e.g., `similarity_cutoff`, rerankers, hybrid search), LlamaIndex doesn’t restrict you like a black-box tool would.
+
+## 💾 3. Persistent and Pluggable Storage
+With just a couple of lines, you can swap between:
+- Chroma, Weaviate, Qdrant, Pinecone, etc.
+- No need to rewrite custom code for each backend—LlamaIndex normalizes the API across all vector stores.
+
+## 🧠 4. LLM Abstractions Built-In
+- It has a native abstraction for LLMs (OpenAI, Anthropic, LLamaCPP, etc.) with config options for temperature, model, streaming, etc.
+- It also provides higher-level tools like `ChatEngine`, `AgentExecutor`, and `GraphIndex`.
+
+## 📚 5. Document Parsers & Chunking
+- Built-in utilities for loading PDFs, websites, Notion pages, CSVs.
+- Configurable node parsers and chunking strategies.
+- You don’t have to manually write logic to chunk and embed documents.
