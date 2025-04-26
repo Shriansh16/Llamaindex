@@ -6,13 +6,12 @@ import os
 
 load_dotenv()
 
-llm = OpenAI(model="gpt-4o", temperature=0)
-data = SimpleDirectoryReader(input_dir="./data/paul_graham/").load_data()
+llm = OpenAI(model="gpt-3.5-turbo", temperature=0)
+data = SimpleDirectoryReader(input_dir="pdf/").load_data()
 index = VectorStoreIndex.from_documents(data)
 
 
 chat_engine = index.as_chat_engine(chat_mode="condense_question", verbose=True)
-# response = chat_engine.chat("What did Paul Graham do after YC?")
 
 while True:
     text_input = input("User: ")
