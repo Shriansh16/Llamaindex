@@ -74,3 +74,30 @@ LlamaIndex provides a high-level, developer-friendly interface for building Retr
 
 - 🧪 **Traditional RAG** → When you need full control over each step or want to integrate custom logic.
 - 🚀 **LlamaIndex** → When you want to prototype and deploy faster with minimal boilerplate but powerful defaults.
+
+
+## 💬 Conversational Retrieval with `as_chat_engine()`
+
+This approach uses LlamaIndex's `as_chat_engine()` to enable conversational, context-aware interaction with your documents. It is ideal for building chatbot-like applications that maintain memory across multiple turns.
+
+## ⚙️ How It Works
+
+- **Document Loading**: Reads all files in the specified directory and prepares them for indexing.
+- **Index Creation**: Automatically chunks the documents and stores them in a vector-based index using embeddings.
+- **LLM Setup**: Uses the GPT-4o model via LlamaIndex's OpenAI wrapper.
+- **Chat Engine Initialization**: Creates a conversational engine with memory and context using `as_chat_engine()`.
+- **Chat Interaction**: Processes queries in a multi-turn conversation format.
+
+## 🔁 Difference from Previous Approach
+
+| Feature               | `query_engine.query()`               | `chat_engine.chat()`                          |
+|-----------------------|--------------------------------------|-----------------------------------------------|
+| � Context/Memory      | Stateless, one-shot queries         | Maintains conversation history (stateful)     |
+| 💬 Interaction Style  | Simple Q&A                          | Multi-turn conversation                       |
+| ⚙️ Customization      | Minimal control                     | Chat mode, verbosity, custom LLM              |
+| 📦 Best Use Case      | Quick factual answers               | Chatbots, assistants, contextual Q&A          |
+
+## ✅ When to Use
+
+- Use `query_engine.query()` for simple, isolated questions.
+- Use `chat_engine.chat()` for chatbot experiences with memory and multi-turn conversation support.
