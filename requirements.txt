@@ -2,3 +2,4 @@ llama-index
 llama-index-core
 python-dotenv
 chromadb
+llama-parse
